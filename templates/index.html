@@ -2,18 +2,24 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-white">
+<section class="relative bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-white overflow-hidden">
     <div class="absolute inset-0 bg-black/20"></div>
+    <!-- Animated background elements -->
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    </div>
+    
     <div class="relative container mx-auto px-4 py-32">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-                Ласкаво просимо до <span class="text-white">RelaxTime</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
+                Ласкаво просимо до <span class="text-white drop-shadow-lg">RelaxTime</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-8 opacity-95">
+            <p class="text-xl md:text-2xl mb-8 opacity-95 animate-fade-in-up delay-200">
                 Розкіш та комфорт у серці Києва. Ваш ідеальний відпочинок починається тут.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ url_for('rooms') }}" class="bg-white text-yellow-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-400">
+                <a href="{{ url_for('rooms') }}" class="bg-white text-yellow-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                     Переглянути номери
                 </a>
                 <a href="{{ url_for('contacts') }}" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-yellow-600 transition-all duration-300 transform hover:scale-105">
@@ -22,7 +28,46 @@
             </div>
         </div>
     </div>
-    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    <!-- Wave transition -->
+    <div class="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-16 fill-gray-50">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg>
+    </div>
+</section>
+
+<!-- Quick Booking Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Швидке бронювання</h2>
+            <form id="quick-booking-form" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Заїзд</label>
+                    <input type="date" name="check_in" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Виїзд</label>
+                    <input type="date" name="check_out" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Гості</label>
+                    <select name="guests" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                        <option value="1">1 гість</option>
+                        <option value="2">2 гості</option>
+                        <option value="3">3 гості</option>
+                        <option value="4">4 гості</option>
+                        <option value="5">5+ гостей</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button type="submit" class="w-full bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 transition-colors duration-200">
+                        Знайти номери
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 
 <!-- Features Section -->
@@ -36,8 +81,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-yellow-50 to-yellow-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-yellow-50 to-yellow-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 group">
+                <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                     </svg>
@@ -46,8 +91,8 @@
                 <p class="text-gray-600">Комфортабельні номери з сучасним дизайном та всіма зручностями</p>
             </div>
 
-            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 group">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                     </svg>
@@ -56,8 +101,8 @@
                 <p class="text-gray-600">Повний спектр SPA-процедур для вашого релаксу та оздоровлення</p>
             </div>
 
-            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-green-50 to-green-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-green-50 to-green-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 group">
+                <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
                     </svg>
@@ -66,11 +111,10 @@
                 <p class="text-gray-600">Вишукана кухня від найкращих шеф-кухарів з місцевими та міжнародними стравами</p>
             </div>
 
-            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
-                <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 group">
+                <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
                 <h3 class="text-xl font-semibold text-gray-800 mb-2">24/7 сервіс</h3>
@@ -80,8 +124,52 @@
     </div>
 </section>
 
+<!-- Featured Rooms Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">Популярні номери</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Ознайомтеся з нашими найкращими номерами, які обирають гості найчастіше
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {% for room in rooms %}
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="{{ room.name }}" 
+                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        ₴{{ room.price }}/ніч
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ room.name }}</h3>
+                    <p class="text-gray-600 mb-4">{{ room.description[:80] }}...</p>
+                    <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
+                        <span>{{ room.size }} м²</span>
+                        <span>{{ room.guests }} {% if room.guests == 1 %}гість{% else %}гості{% endif %}</span>
+                    </div>
+                    <button onclick="openBookingModal({{ room.id }})" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-yellow-600 transition-colors duration-200">
+                        Забронювати
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+            <a href="{{ url_for('rooms') }}" class="inline-block bg-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors duration-200">
+                Переглянути всі номери
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- Location Section -->
-<section class="py-20 bg-gray-100">
+<section class="py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -92,21 +180,21 @@
                     ресторанів та культурних об'єктів міста.
                 </p>
                 <div class="space-y-4">
-                    <div class="flex items-center space-x-3">
+                    <div class="flex items-center space-x-3 p-3 bg-yellow-50 rounded-lg">
                         <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <span class="text-gray-700">Майдан Незалежності - 2 хвилини</span>
+                        <span class="text-gray-700 font-medium">Майдан Незалежності - 2 хвилини</span>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <span class="text-gray-700">Золоті Ворота - 5 хвилин</span>
+                    <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        <span class="text-gray-700 font-medium">Золоті Ворота - 5 хвилин</span>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <span class="text-gray-700">Софійський собор - 7 хвилин</span>
+                    <div class="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span class="text-gray-700 font-medium">Софійський собор - 7 хвилин</span>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <span class="text-gray-700">Оперний театр - 10 хвилин</span>
+                    <div class="flex items-center space-x-3 p-3 bg-purple-50 rounded-lg">
+                        <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                        <span class="text-gray-700 font-medium">Оперний театр - 10 хвилин</span>
                     </div>
                 </div>
             </div>
@@ -124,12 +212,16 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white">
-    <div class="container mx-auto px-4 text-center">
+<section class="py-20 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white relative overflow-hidden">
+    <div class="absolute inset-0">
+        <div class="absolute top-10 left-20 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+        <div class="absolute bottom-10 right-20 w-48 h-48 bg-white/5 rounded-full blur-xl animate-pulse delay-1000"></div>
+    </div>
+    <div class="relative container mx-auto px-4 text-center">
         <h2 class="text-4xl md:text-5xl font-bold mb-6">Готові до незабутнього відпочинку?</h2>
         <p class="text-xl mb-8 opacity-95">Забронюйте свій номер зараз та отримайте знижку 15% на перше проживання</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ url_for('rooms') }}" class="bg-white text-yellow-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ url_for('rooms') }}" class="bg-white text-yellow-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                 Забронювати номер
             </a>
             <a href="tel:+380441234567" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-yellow-600 transition-all duration-300 transform hover:scale-105">
@@ -138,4 +230,45 @@
         </div>
     </div>
 </section>
+
+<!-- Booking Modal -->
+<div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold text-gray-800">Бронювання номера</h3>
+            <button onclick="closeBookingModal()" class="text-gray-400 hover:text-gray-600">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <form id="booking-form" class="space-y-4">
+            <input type="hidden" id="modal-room-id" name="room_id">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Заїзд</label>
+                    <input type="date" name="check_in" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Виїзд</label>
+                    <input type="date" name="check_out" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500">
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Кількість гостей</label>
+                <select name="guests" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500">
+                    <option value="">Оберіть кількість</option>
+                    <option value="1">1 гість</option>
+                    <option value="2">2 гості</option>
+                    <option value="3">3 гості</option>
+                    <option value="4">4 гості</option>
+                    <option value="5">5+ гостей</option>
+                </select>
+            </div>
+            <button type="submit" class="w-full bg-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-600 transition-colors">
+                Забронювати
+            </button>
+        </form>
+    </div>
+</div>
 {% endblock %}
